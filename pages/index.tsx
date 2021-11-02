@@ -21,11 +21,14 @@ console.log( items )
       <h1>Top111</h1>
       <hr />
       {items.map((item, index) => {
-console.log(item.node);
         let category_name = ""
+        if(typeof item.node.categories.edges[0] !=='undefined'){
+//console.log(item.node.categories.edges[0].node.name );
+          category_name = item.node.categories.edges[0].node.name;
+        }
         return (<IndexRow key={index}
           id={item.node.postId} title={item.node.title}
-          date={item.node.date} category_name={""} />       
+          date={item.node.date} category_name={category_name} />       
         )
       })}      
     </div>
@@ -37,7 +40,7 @@ export const getStaticProps = async context => {
     query: Posts.getItems(),
     fetchPolicy: "network-only"
   });  
-console.log(data);
+//console.log(data);
   return {
     props : {
       blogs: data.data.posts.edges,

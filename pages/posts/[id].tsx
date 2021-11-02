@@ -9,9 +9,14 @@ import Layout from '../../components/layout'
 import Posts from '../../graphql/posts';
 
 //
-export default function Page({ blog, category_name }) {
-//console.log(blog)
+export default function PostShow({ blog, category_name }) {
+console.log(blog)
   const content = marked(blog.content)
+  let categoryName = ""
+  if(typeof blog.categories.edges[0] !=='undefined'){
+//console.log(item.node.categories.edges[0].node.name );
+    categoryName = blog.categories.edges[0].node.name;
+  }  
 //  const content = ""
   return (
     <Layout>
@@ -27,6 +32,7 @@ export default function Page({ blog, category_name }) {
       </div>
       <hr /> 
       <h1>{blog.title}</h1>
+      Category: {categoryName}<br />
       Date: {blog.date}<br />
       <hr />
       <div id="post_item" dangerouslySetInnerHTML={{__html: `${content}`}}></div>
@@ -37,7 +43,7 @@ export default function Page({ blog, category_name }) {
         max-width : 100%;
         height : auto;
       }
-      div#post_item > hr {
+      div#post_item hr {
         height: 1px;
         background-color: #000;
         border: none;

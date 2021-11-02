@@ -13,6 +13,14 @@ const post = {
             link 
             date
             content 
+            categories {
+              edges { 
+                node {
+                  id
+                  name 
+                } 
+              }            
+            }            
           }
         }
       } 
@@ -27,8 +35,16 @@ const post = {
         date
         link
         content
+        categories {
+          edges { 
+            node {
+              id
+              name 
+            } 
+          }            
+        }        
       }
-    }      
+    }
    `   
   },  
 }

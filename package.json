@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "serve": "npm run build && npm run start"
+    "export": "next export",
+    "serve": "npm run build && npm run start",
+    "deploy": "npm run build && npm run export"
   },
   "dependencies": {
     "@apollo/client": "^3.4.13",
